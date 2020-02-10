@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby";
 import albumStyle from "../components/album.module.css";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import Linkify from "react-linkify";
 
 import WhereToListenSmall from "../components/WhereToListenSmall";
 import WhereToListen from "../components/WhereToListenToUs";
@@ -63,12 +64,13 @@ export default ({ data }) => {
         <div className="text-gray-900 font-medium text-xl mb-6 lg:text-2xl lgx:text-3xl">
           Episode Notes
         </div>
-        <div
-          className="lg:text-xl"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <Linkify>
+          <div
+            className="lg:text-xl"
+            dangerouslySetInnerHTML={{ __html: post.content.encoded }}
+          />
+        </Linkify>
       </div>
-
       <div className="text-center p-8 max-w-md md:max-w-lg m-auto mt-8 lg:max-w-xl lgx:max-w-2xl lgx:mt-16">
         <Newsletter />
       </div>
@@ -105,7 +107,7 @@ export const query = graphql`
     feedGatsbyBlog(id: { eq: $slug }) {
       title
       pubDate
-      content
+      # content
       itunes {
         duration
         image
@@ -113,6 +115,9 @@ export const query = graphql`
       }
       enclosure {
         url
+      }
+      content {
+        encoded
       }
     }
   }

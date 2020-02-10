@@ -19,9 +19,9 @@ const Newsletter = () => {
         Never Miss a Thing
       </div>
       <div className="mt-6 mb-6 text-gray-700 leading-relaxed md:text-xl">
-        Please sign up to our mailing list to receive latest news on everything
-        OTB direct to your email and get exclusive access to content, giveaways,
-        free tickets to live shows and more!
+        Please sign up to our mailing list to receive latest news and updates on
+        everything {data.site.siteMetadata.title} direct to your email as well
+        as access to exclusive content!
       </div>
 
       <div>
